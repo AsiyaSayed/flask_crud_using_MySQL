@@ -6,9 +6,9 @@ from flask_mysqldb import MySQL
 app = Flask(__name__)
 app.secret_key = 'cookie dough'
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'traxex23999'
+app.config['MYSQL_HOST'] = 'asiyademoserver123.mysql.database.azure.com'
+app.config['MYSQL_USER'] = 'myadmin@asiyademoserver123'
+app.config['MYSQL_PASSWORD'] = 'AsiyaSayed@123'
 app.config['MYSQL_DB'] = 'crud'
 
 mysql = MySQL(app)
@@ -21,8 +21,6 @@ def home():
     cur.execute("SELECT  * FROM students")
     data = cur.fetchall()
     cur.close()
-
-
 
 
     return render_template('index.html', students=data )
