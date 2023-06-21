@@ -1,0 +1,17 @@
+$loc ="westus2";
+$rgp_name ="RG_AMLAsiya";
+$web_app ="aswebappwithmysql";
+$sku_name ="B1";
+$code_ver ="PYTHON:3.11";
+
+az group create --location $loc --name $rgp_name;
+
+az appservice plan create -g $rgp_name -n $web_app --location $loc --is-linux --sku $sku_name
+
+az webapp up -n $web_app -g $rgp_name --location $loc --runtime $code_ver --plan $web_app --sku $sku_name;
+
+az webapp config appsettings set --name aswebappwithmysql --resource-group $rgp_name --settings DB_HOST="asiyademoserver123.mysql.database.azure.com" DB_DATABASE="crud" DB_USERNAME="myadmin@asiyademoserver123" DB_PASSWORD="AsiyaSayed@123" MYSQL_SSL="true";
+
+
+
+
